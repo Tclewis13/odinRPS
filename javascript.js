@@ -2,11 +2,8 @@
     let playerScore = 0;
     let compScore = 0;
 
-   
-    let rando = getRandom();
-    let compChoice = getCompChoice(rando);
-
-    console.log('Conputer picks ' + compChoice);
+    const results = document.querySelector(".results");
+    const score = document.querySelector(".score");
     
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
@@ -26,17 +23,19 @@
     //}
 
     function playRound(playerChoice){
+        let rando = getRandom();
+        let compChoice = getCompChoice(rando);
         if(playerChoice === 'rock'){
             switch(compChoice){
                 case 'rock':
-                    console.log('Tie!');
+                    results.textContent = ('Tie!');
                     break;
                 case 'paper':
-                    console.log('Lose! Paper beats Rock.');
+                    results.textContent = ('Lose! Paper beats Rock.');
                     compScore++;
                     break;
                 case 'scissors':
-                    console.log('Win! Rock beats Scissors.');
+                    results.textContent = ('Win! Rock beats Scissors.');
                     playerScore++;
                     break
             }
@@ -44,14 +43,14 @@
         else if(playerChoice === 'paper'){
             switch(compChoice){
                 case 'rock':
-                    console.log('Win! Paper beats rock.');
+                    results.textContent = ('Win! Paper beats rock.');
                     playerScore++;
                     break;
                 case 'paper':
-                    console.log('Tie!');
+                    results.textContent = ('Tie!');
                     break;
                 case 'scissors':
-                    console.log('Lose! Scissors beats Paper.');
+                    results.textContent = ('Lose! Scissors beats Paper.');
                     compScore++;
                     break
             }
@@ -59,21 +58,29 @@
         else if(playerChoice === 'scissors'){
             switch(compChoice){
                 case 'rock':
-                    console.log('Lose! Rock beats Scissors.');
+                    results.textContent = ('Lose! Rock beats Scissors.');
                     compScore++;
                     break;
                 case 'paper':
-                    console.log('Win! Scissors beats paper.');
+                    results.textContent = ('Win! Scissors beats paper.');
                     playerScore++;
                     break;
                 case 'scissors':
-                    console.log('Tie!');
+                    results.textContent = ('Tie!');
                     break
             }
         }
         else{
             console.log('Invalid Play');
             return null;
+        }
+        score.textContent = ("Player: " + playerScore + " Computer: " + compScore);
+        if(playerScore >= 5){
+            alert("You win!");
+            
+        }
+        else if (compScore >=5){
+            alert("Computer wins!");
         }
     }
 
