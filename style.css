@@ -1,0 +1,24 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.title{
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+button{
+    width:200px;
+    height:150px;
+    margin:30px;
+}
+.results{
+    font-size: 20px;
+    margin: 20px;
+}
+.score{
+    font-size: 20px;
+    margin: 20px;
+}

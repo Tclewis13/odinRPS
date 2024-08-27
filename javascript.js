@@ -1,45 +1,31 @@
 
-
-
-
-playGame();
-
-
-
-
-
-
-function playGame(){
-
     let playerScore = 0;
     let compScore = 0;
 
-    for (let i = 1; i < 6; i++) {
-        let rando = getRandom();
-        let compChoice = getCompChoice(rando);
+   
+    let rando = getRandom();
+    let compChoice = getCompChoice(rando);
 
-        console.log('Begin Round ' + i);
+    console.log('Conputer picks ' + compChoice);
+    
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.addEventListener("click", function(e) {
+            playRound(button.id);
+        });
+    });
 
-        let playerChoice = prompt("What is your play?");
-        playerChoice = playerChoice.toLowerCase();
+    //if(playerScore > compScore){
+    //    console.log('Final: Player Wins!');
+    //}
+    //else if(compScore > playerScore){
+    //    console.log('Final: Computer Wins!');
+    //}
+    //else{
+    //    console.log('Final: Tie!');
+    //}
 
-        console.log('Player picks ' + playerChoice + '. Computer picks ' + compChoice + '.');
-        playRound(playerChoice,compChoice);
-
-        console.log('Scores at end of Round ' + i + ': Player at ' + playerScore + ' Computer at ' + compScore);
-    } 
-
-    if(playerScore > compScore){
-        console.log('Final: Player Wins!');
-    }
-    else if(compScore > playerScore){
-        console.log('Final: Computer Wins!');
-    }
-    else{
-        console.log('Final: Tie!');
-    }
-
-    function playRound(playerChoice, compChoice){
+    function playRound(playerChoice){
         if(playerChoice === 'rock'){
             switch(compChoice){
                 case 'rock':
@@ -90,7 +76,6 @@ function playGame(){
             return null;
         }
     }
-}
 
 
 function getRandom(){
